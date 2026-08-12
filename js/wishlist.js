@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",()=>{let w=getWish(),ps=getProducts().filter(p=>w.includes(p.id));document.getElementById("wishlistProducts").innerHTML=ps.length?ps.map(productCard).join(""):"<div class='empty'><h2>Your wishlist is empty</h2><p>Save pieces you love while browsing.</p><a class='btn' href='shop.html'>Browse products</a></div>";});

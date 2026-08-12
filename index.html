@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUMERA — Women's Fashion Store</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="announcement">Free delivery on orders over ৳2,500 · Easy returns within 7 days</div>
+  <header class="site-header">
+    <a class="logo" href="index.html">LUMERA<span>.</span></a>
+    <button class="mobile-menu" id="mobileMenu">☰</button>
+    <nav id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="shop.html?category=Dresses">Dresses</a>
+      <a href="shop.html?category=Shoes">Shoes</a>
+      <a href="shop.html?category=Bags">Bags</a>
+      <a href="shop.html?category=Jewelry">Jewelry</a>
+      <a href="shop.html?category=Sale">Sale</a>
+    </nav>
+    <div class="header-actions">
+      <button id="searchBtn" aria-label="Search">⌕</button>
+      <a href="wishlist.html" aria-label="Wishlist">♡<b id="wishlistCount">0</b></a>
+      <a href="cart.html" aria-label="Cart">🛒<b id="cartCount">0</b></a>
+      <button id="themeToggle" aria-label="Toggle theme" title="Toggle dark/light mode">🌙</button>
+      <a href="admin/index.html" class="admin-link">Admin</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">NEW SEASON 2026</p>
+      <h1>Style that feels<br><em>like you.</em></h1>
+      <p>Curated fashion, shoes, bags and jewelry for your everyday statement.</p>
+      <a class="btn" href="shop.html">Shop collection</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><p class="eyebrow">SHOP BY CATEGORY</p><h2>Find your style</h2></div><a href="shop.html">View all →</a></div>
+    <div class="category-grid">
+      <a class="category-card cat-dresses" href="shop.html?category=Dresses"><span>Dresses</span></a>
+      <a class="category-card cat-shoes" href="shop.html?category=Shoes"><span>Shoes</span></a>
+      <a class="category-card cat-bags" href="shop.html?category=Bags"><span>Bags</span></a>
+      <a class="category-card cat-jewelry" href="shop.html?category=Jewelry"><span>Jewelry</span></a>
+    </div>
+  </section>
+
+  <section class="section muted">
+    <div class="section-head"><div><p class="eyebrow">CURATED FOR YOU</p><h2>New arrivals</h2></div><a href="shop.html?sort=newest">Shop new →</a></div>
+    <div class="product-grid" id="newProducts"></div>
+  </section>
+
+  <section class="promo">
+    <div><p class="eyebrow">THE WEEKEND EDIT</p><h2>Up to 30% off selected styles</h2><a class="btn light" href="shop.html?category=Sale">Shop sale</a></div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><p class="eyebrow">BEST SELLERS</p><h2>Most loved</h2></div><a href="shop.html?sort=popular">See best sellers →</a></div>
+    <div class="product-grid" id="bestProducts"></div>
+  </section>
+
+  <section class="newsletter">
+    <p class="eyebrow">STAY IN THE LOOP</p>
+    <h2>10% off your first order</h2>
+    <p>Sign up for new drops, private sales and style inspiration.</p>
+    <form id="newsletterForm"><input type="email" placeholder="Your email address" required><button class="btn">Subscribe</button></form>
+    <small id="newsletterMsg"></small>
+  </section>
+
+  <footer class="footer">
+    <div><a class="logo" href="index.html">LUMERA<span>.</span></a><p>Modern women's fashion for every day and every occasion.</p></div>
+    <div><h4>Shop</h4><a href="shop.html">All products</a><a href="shop.html?category=Dresses">Dresses</a><a href="shop.html?category=Shoes">Shoes</a><a href="shop.html?category=Bags">Bags</a></div>
+    <div><h4>Help</h4><a href="#">Shipping</a><a href="#">Returns</a><a href="contact.html">Contact</a><a href="#">FAQ</a></div>
+    <div><h4>Account</h4><a href="wishlist.html">Wishlist</a><a href="cart.html">Cart</a><a href="admin/index.html">Admin demo</a></div>
+    <div class="copyright">© 2026 LUMERA. Demo e-commerce project.</div>
+  </footer>
+  <div class="search-overlay" id="searchOverlay"><div class="search-box"><button id="closeSearch">×</button><input id="globalSearch" placeholder="Search products..."><div id="searchResults"></div></div></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
