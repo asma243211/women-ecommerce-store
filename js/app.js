@@ -32,7 +32,10 @@ const seedProducts = [
 {id:30,name:"Silk Scarf",category:"Accessories",price:990,oldPrice:1290,rating:4.7,stock:35,badge:"New",popular:88,created:30,images:["https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&fit=crop&w=900&q=85"]},
 {id:31,name:"Leather Belt",category:"Accessories",price:1290,oldPrice:1590,rating:4.8,stock:20,badge:"",popular:90,created:31,images:["https://images.unsplash.com/photo-1526178618414-0d5f0a378561?auto=format&fit=crop&w=900&q=85"]},
 {id:32,name:"Cashmere Beanie",category:"Accessories",price:1790,oldPrice:2190,rating:4.7,stock:15,badge:"Sale",popular:85,created:32,images:["https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?auto=format&fit=crop&w=900&q=85"]},
-{id:33,name:"Gold Pendant Necklace",category:"Jewelry",price:2290,oldPrice:2790,rating:4.8,stock:14,badge:"New",popular:92,created:33,images:["https://images.unsplash.com/photo-1599643477875-530b6ed7e6a3?auto=format&fit=crop&w=900&q=85"]},
+  {id:33,name:"Pearl Hair Clip Set",category:"Accessories",price:890,oldPrice:1190,rating:4.8,stock:25,badge:"New",popular:89,created:33,images:["https://images.unsplash.com/photo-1630019852942-f89202989a53?auto=format&fit=crop&w=900&q=85"]},
+  {id:34,name:"Structured Tote Bag",category:"Accessories",price:2190,oldPrice:2690,rating:4.7,stock:12,badge:"",popular:87,created:34,images:["https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=900&q=85"]},
+  {id:35,name:"Oversized Square Sunglasses",category:"Accessories",price:1190,oldPrice:1590,rating:4.6,stock:20,badge:"Sale",popular:84,created:35,images:["https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=900&q=85"]},
+  {id:36,name:"Gold Pendant Necklace",category:"Jewelry",price:2290,oldPrice:2790,rating:4.8,stock:14,badge:"New",popular:92,created:36,images:["https://images.unsplash.com/photo-1599643477875-530b6ed7e6a3?auto=format&fit=crop&w=900&q=85"]},
 {id:34,name:"Sapphire Drop Earrings",category:"Jewelry",price:2590,oldPrice:3190,rating:4.9,stock:10,badge:"Best seller",popular:97,created:34,images:["https://images.unsplash.com/photo-1630019852942-f89202989a53?auto=format&fit=crop&w=900&q=85"]},
 {id:35,name:"Vintage Brooch Pin",category:"Jewelry",price:1390,oldPrice:1690,rating:4.6,stock:18,badge:"Sale",popular:86,created:35,images:["https://images.unsplash.com/photo-1635767798638-3e2523422c67?auto=format&fit=crop&w=900&q=85"]},
 {id:36,name:"Rose Gold Bangle",category:"Jewelry",price:1890,oldPrice:2290,rating:4.7,stock:16,badge:"",popular:89,created:36,images:["https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=900&q=85"]},
@@ -42,10 +45,22 @@ const seedProducts = [
 {id:40,name:"Classic Leather Strap Watch",category:"Watches",price:3890,oldPrice:4590,rating:4.7,stock:15,badge:"",popular:90,created:40,images:["https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=900&q=85"]},
 {id:41,name:"Minimalist Steel Watch",category:"Watches",price:3590,oldPrice:4290,rating:4.9,stock:10,badge:"Best seller",popular:96,created:41,images:["https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85"]},
 {id:42,name:"Pearl Dial Watch",category:"Watches",price:4590,oldPrice:5490,rating:4.8,stock:8,badge:"New",popular:94,created:42,images:["https://images.unsplash.com/photo-1548390137-0f5e8823c759?auto=format&fit=crop&w=900&q=85"]},
-{id:43,name:"Gold Tone Bracelet Watch",category:"Watches",price:4990,oldPrice:5990,rating:4.7,stock:9,badge:"Sale",popular:92,created:43,images:["https://images.unsplash.com/photo-1533140503556-8d7b832f9e0c?auto=format&fit=crop&w=900&q=85"]}
+{id:43,name:"Gold Tone Bracelet Watch",category:"Watches",price:4990,oldPrice:5990,rating:4.7,stock:9,badge:"Sale",popular:92,created:43,images:["https://images.unsplash.com/photo-1533140503556-8d7b832f9e0c?auto=format&fit=crop&w=900&q=85"]},
+  {id:44,name:"Silver Mesh Watch",category:"Watches",price:3790,oldPrice:4490,rating:4.8,stock:14,badge:"New",popular:91,created:44,images:["https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=900&q=85"]},
+  {id:45,name:"Leather Strap Watch",category:"Watches",price:3290,oldPrice:3990,rating:4.7,stock:18,badge:"",popular:88,created:45,images:["https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=900&q=85"]},
+  {id:46,name:"Ceramic White Watch",category:"Watches",price:5490,oldPrice:6490,rating:4.9,stock:7,badge:"Best seller",popular:95,created:46,images:["https://images.unsplash.com/photo-1548390137-0f5e8823c759?auto=format&fit=crop&w=900&q=85"]}
 ];
 
-function getProducts(){ return JSON.parse(localStorage.getItem(STORE_KEY)||"null") || seedProducts; }
+function getProducts(){
+  const stored = localStorage.getItem(STORE_KEY);
+  if (stored) {
+    try {
+      const parsed = JSON.parse(stored);
+      if (Array.isArray(parsed) && parsed.length >= 46) return parsed;
+    } catch {}
+  }
+  return seedProducts;
+}
 function saveProducts(p){localStorage.setItem(STORE_KEY,JSON.stringify(p));}
 function money(n){return "৳"+Number(n).toLocaleString("en-BD");}
 function getCart(){return JSON.parse(localStorage.getItem(CART_KEY)||"[]");}

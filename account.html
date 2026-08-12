@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account — LUMERA</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+  <div class="announcement">Free delivery on orders over ৳2,500 · Easy returns within 7 days</div>
+  <header class="site-header">
+    <a class="logo" href="index.html">LUMERA<span>.</span></a>
+    <button class="mobile-menu" id="mobileMenu">☰</button>
+    <nav id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="shop.html?category=Dresses">Dresses</a>
+      <a href="shop.html?category=Shoes">Shoes</a>
+      <a href="shop.html?category=Bags">Bags</a>
+      <a href="shop.html?category=Jewelry">Jewelry</a>
+      <a href="shop.html?category=Watches">Watches</a>
+      <a href="shop.html?category=Sale">Sale</a>
+    </nav>
+    <div class="header-actions">
+      <button id="searchBtn" aria-label="Search">⌕</button>
+      <a href="wishlist.html" aria-label="Wishlist">♡<b id="wishlistCount">0</b></a>
+      <a href="cart.html" aria-label="Cart">🛒<b id="cartCount">0</b></a>
+      <button id="themeToggle" aria-label="Toggle theme" title="Toggle dark/light mode">🌙</button>
+    </div>
+  </header>
+
+  <main class="account-page" id="accountPage">
+    <div class="account-header">
+      <div class="account-avatar" id="accountAvatar"></div>
+      <div class="account-info">
+        <h1 id="accountName"></h1>
+        <p id="accountEmail"></p>
+      </div>
+    </div>
+
+    <div class="account-grid">
+      <aside class="account-sidebar">
+        <nav class="account-nav">
+          <a href="#profile" data-section="profile" class="active">Account Details</a>
+          <a href="#orders" data-section="orders">My Orders</a>
+          <a href="#wishlist" data-section="wishlist">Wishlist</a>
+          <a href="#" class="logout" id="sidebarLogout">Logout</a>
+        </nav>
+      </aside>
+
+      <div class="account-content">
+        <section class="account-section active" id="profile">
+          <h2>Account Information</h2>
+          <form class="account-fields" id="profileForm">
+            <div class="form-group">
+              <label for="profileName">Full Name</label>
+              <input type="text" id="profileName" name="name" required>
+              <span class="error-message"></span>
+            </div>
+            <div class="form-group">
+              <label for="profileEmail">Email</label>
+              <input type="email" id="profileEmail" name="email" required>
+              <span class="error-message"></span>
+            </div>
+            <div class="form-group">
+              <label for="profilePhone">Phone Number</label>
+              <input type="tel" id="profilePhone" name="phone" required>
+              <span class="error-message"></span>
+            </div>
+            <div class="form-group full-width">
+              <button type="submit" class="btn">Save Changes</button>
+            </div>
+          </form>
+          <div class="form-group full-width" style="margin-top:24px;padding-top:24px;border-top:1px solid var(--border)">
+            <h3 style="font-size:14px;font-weight:500;margin:0 0 12px">Change Password</h3>
+            <div class="account-fields" style="margin:0">
+              <div class="form-group">
+                <label for="currentPassword">Current Password</label>
+                <input type="password" id="currentPassword" name="currentPassword">
+                <span class="error-message"></span>
+              </div>
+              <div class="form-group">
+                <label for="newPassword">New Password</label>
+                <input type="password" id="newPassword" name="newPassword">
+                <span class="error-message"></span>
+              </div>
+              <div class="form-group">
+                <label for="confirmNewPassword">Confirm New Password</label>
+                <input type="password" id="confirmNewPassword" name="confirmNewPassword">
+                <span class="error-message"></span>
+              </div>
+              <div class="form-group full-width">
+                <button type="button" class="btn outline" id="changePasswordBtn">Update Password</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="account-section" id="orders">
+          <h2>My Orders</h2>
+          <div class="orders-list" id="ordersList">
+            <div class="empty-state">
+              <p class="eyebrow">NO ORDERS YET</p>
+              <h3>You haven't placed any orders</h3>
+              <p>Your order history will appear here once you make a purchase.</p>
+              <a href="shop.html" class="btn" style="margin-top:16px;display:inline-block">Start Shopping</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="account-section" id="wishlist">
+          <h2>My Wishlist</h2>
+          <div class="wishlist-grid" id="wishlistGrid">
+            <div class="empty-state">
+              <p class="eyebrow">WISHLIST EMPTY</p>
+              <h3>Save items you love</h3>
+              <p>Products you add to your wishlist will appear here.</p>
+              <a href="shop.html" class="btn" style="margin-top:16px;display:inline-block">Browse Products</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div><a class="logo" href="index.html">LUMERA<span>.</span></a><p>Modern women's fashion for every day and every occasion.</p></div>
+    <div><h4>Shop</h4><a href="shop.html">All products</a><a href="shop.html?category=Dresses">Dresses</a><a href="shop.html?category=Shoes">Shoes</a><a href="shop.html?category=Bags">Bags</a><a href="shop.html?category=Jewelry">Jewelry</a><a href="shop.html?category=Watches">Watches</a></div>
+    <div><h4>Help</h4><a href="#">Shipping</a><a href="#">Returns</a><a href="contact.html">Contact</a><a href="#">FAQ</a></div>
+    <div><h4>Account</h4><a href="wishlist.html">Wishlist</a><a href="cart.html">Cart</a></div>
+    <div class="copyright">© 2026 LUMERA. Demo e-commerce project.</div>
+  </footer>
+
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-box">
+      <button id="closeSearch">×</button>
+      <input id="globalSearch" placeholder="Search products...">
+      <div id="searchResults"></div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/account.js"></script>
+</body>
+</html>

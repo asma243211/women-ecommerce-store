@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account — LUMERA</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+  <div class="announcement">Free delivery on orders over ৳2,500 · Easy returns within 7 days</div>
+  <header class="site-header">
+    <a class="logo" href="index.html">LUMERA<span>.</span></a>
+    <button class="mobile-menu" id="mobileMenu">☰</button>
+    <nav id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="shop.html?category=Dresses">Dresses</a>
+      <a href="shop.html?category=Shoes">Shoes</a>
+      <a href="shop.html?category=Bags">Bags</a>
+      <a href="shop.html?category=Jewelry">Jewelry</a>
+      <a href="shop.html?category=Watches">Watches</a>
+      <a href="shop.html?category=Sale">Sale</a>
+    </nav>
+    <div class="header-actions">
+      <button id="searchBtn" aria-label="Search">⌕</button>
+      <a href="wishlist.html" aria-label="Wishlist">♡<b id="wishlistCount">0</b></a>
+      <a href="cart.html" aria-label="Cart">🛒<b id="cartCount">0</b></a>
+      <button id="themeToggle" aria-label="Toggle theme" title="Toggle dark/light mode">🌙</button>
+    </div>
+  </header>
+
+  <main class="auth-page">
+    <div class="auth-container">
+      <div class="auth-header">
+        <a href="index.html" class="auth-logo" style="text-decoration:none;color:inherit">LUMERA<span>.</span></a>
+        <h1 class="auth-title">Create your account</h1>
+        <p class="auth-subtitle">Join LUMERA for faster checkout, order tracking, and exclusive offers</p>
+      </div>
+
+      <form class="auth-form" id="registerForm" novalidate>
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required autocomplete="name">
+          <span class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+          <span class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="+880 1X XXX XXXX" required autocomplete="tel">
+          <span class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="password" name="password" placeholder="Create a password" required autocomplete="new-password">
+            <button type="button" class="password-toggle" aria-label="Show password" data-target="password">👁</button>
+          </div>
+          <span class="error-message"></span>
+          <small style="color:var(--text-muted);font-size:11px;margin-top:4px;display:block">At least 8 characters with uppercase, lowercase & number</small>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required autocomplete="new-password">
+            <button type="button" class="password-toggle" aria-label="Show password" data-target="confirmPassword">👁</button>
+          </div>
+          <span class="error-message"></span>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <input type="checkbox" id="terms" name="terms" required>
+          <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+        </div>
+
+        <button type="submit" class="btn btn-auth">Create Account</button>
+      </form>
+
+      <div class="auth-footer">
+        <p>Already have an account? <a href="login.html">Sign In</a></p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div><a class="logo" href="index.html">LUMERA<span>.</span></a><p>Modern women's fashion for every day and every occasion.</p></div>
+    <div><h4>Shop</h4><a href="shop.html">All products</a><a href="shop.html?category=Dresses">Dresses</a><a href="shop.html?category=Shoes">Shoes</a><a href="shop.html?category=Bags">Bags</a><a href="shop.html?category=Jewelry">Jewelry</a><a href="shop.html?category=Watches">Watches</a></div>
+    <div><h4>Help</h4><a href="#">Shipping</a><a href="#">Returns</a><a href="contact.html">Contact</a><a href="#">FAQ</a></div>
+    <div><h4>Account</h4><a href="wishlist.html">Wishlist</a><a href="cart.html">Cart</a><a href="login.html">Sign In</a></div>
+    <div class="copyright">© 2026 LUMERA. Demo e-commerce project.</div>
+  </footer>
+
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-box">
+      <button id="closeSearch">×</button>
+      <input id="globalSearch" placeholder="Search products...">
+      <div id="searchResults"></div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("registerForm");
+      const nameInput = document.getElementById("name");
+      const emailInput = document.getElementById("email");
+      const phoneInput = document.getElementById("phone");
+      const passwordInput = document.getElementById("password");
+      const confirmPasswordInput = document.getElementById("confirmPassword");
+      const termsInput = document.getElementById("terms");
+
+      document.querySelectorAll(".password-toggle").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const targetId = btn.dataset.target;
+          const target = document.getElementById(targetId);
+          const type = target.type === "password" ? "text" : "password";
+          target.type = type;
+          btn.textContent = type === "password" ? "👁" : "🙈";
+          btn.setAttribute("aria-label", type === "password" ? "Show password" : "Hide password");
+        });
+      });
+
+      const inputs = [nameInput, emailInput, phoneInput, passwordInput, confirmPasswordInput, termsInput];
+      inputs.forEach(input => {
+        input.addEventListener("input", () => clearError(input));
+        input.addEventListener("blur", () => validateField(input));
+      });
+
+      function validateField(input) {
+        const value = input.value.trim();
+
+        switch (input.id) {
+          case "name":
+            if (value && value.length < 2) {
+              showError(input, "Name must be at least 2 characters");
+              return false;
+            }
+            break;
+          case "email":
+            if (value && !validateEmail(value)) {
+              showError(input, "Please enter a valid email address");
+              return false;
+            }
+            break;
+          case "phone":
+            if (value && !validatePhone(value)) {
+              showError(input, "Please enter a valid phone number");
+              return false;
+            }
+            break;
+          case "password":
+            if (value) {
+              const pwdError = validatePassword(value);
+              if (pwdError) {
+                showError(input, pwdError);
+                return false;
+              }
+            }
+            break;
+          case "confirmPassword":
+            if (value && value !== passwordInput.value.trim()) {
+              showError(input, "Passwords do not match");
+              return false;
+            }
+            break;
+          case "terms":
+            if (!input.checked) {
+              showError(input, "You must agree to the terms");
+              return false;
+            }
+            break;
+        }
+        clearError(input);
+        return true;
+      }
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        let isValid = true;
+        inputs.forEach(input => {
+          if (input.type === "checkbox") {
+            if (!input.checked) {
+              showError(input, "You must agree to the terms");
+              isValid = false;
+            }
+          } else if (!validateField(input)) {
+            isValid = false;
+          } else if (!input.value.trim()) {
+            const labels = {
+              name: "Full name",
+              email: "Email",
+              phone: "Phone number",
+              password: "Password",
+              confirmPassword: "Confirm password"
+            };
+            showError(input, labels[input.id] + " is required");
+            isValid = false;
+          }
+        });
+
+        if (!isValid) return;
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Creating account...";
+
+        const result = register({
+          name: nameInput.value.trim(),
+          email: emailInput.value.trim(),
+          phone: phoneInput.value.trim(),
+          password: passwordInput.value
+        });
+
+        if (result.success) {
+          toast("Account created successfully! Welcome, " + result.customer.name.split(" ")[0] + "!");
+          setTimeout(() => {
+            window.location.href = getRedirectUrl();
+          }, 1200);
+        } else {
+          toast(result.message, "error");
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Create Account";
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — LUMERA</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+  <div class="announcement">Free delivery on orders over ৳2,500 · Easy returns within 7 days</div>
+  <header class="site-header">
+    <a class="logo" href="index.html">LUMERA<span>.</span></a>
+    <button class="mobile-menu" id="mobileMenu">☰</button>
+    <nav id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="shop.html?category=Dresses">Dresses</a>
+      <a href="shop.html?category=Shoes">Shoes</a>
+      <a href="shop.html?category=Bags">Bags</a>
+      <a href="shop.html?category=Jewelry">Jewelry</a>
+      <a href="shop.html?category=Watches">Watches</a>
+      <a href="shop.html?category=Sale">Sale</a>
+    </nav>
+    <div class="header-actions">
+      <button id="searchBtn" aria-label="Search">⌕</button>
+      <a href="wishlist.html" aria-label="Wishlist">♡<b id="wishlistCount">0</b></a>
+      <a href="cart.html" aria-label="Cart">🛒<b id="cartCount">0</b></a>
+      <button id="themeToggle" aria-label="Toggle theme" title="Toggle dark/light mode">🌙</button>
+    </div>
+  </header>
+
+  <main class="auth-page">
+    <div class="auth-container">
+      <div class="auth-header">
+        <a href="index.html" class="auth-logo" style="text-decoration:none;color:inherit">LUMERA<span>.</span></a>
+        <h1 class="auth-title">Welcome back</h1>
+        <p class="auth-subtitle">Sign in to your account to continue shopping</p>
+      </div>
+
+      <form class="auth-form" id="loginForm" novalidate>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+          <span class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="password" name="password" placeholder="Enter your password" required autocomplete="current-password">
+            <button type="button" class="password-toggle" aria-label="Show password" data-target="password">👁</button>
+          </div>
+          <span class="error-message"></span>
+        </div>
+
+        <div class="form-group" style="display:flex;justify-content:space-between;align-items:center;margin-top:-8px">
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:400;font-size:13px">
+            <input type="checkbox" name="remember" style="width:16px;height:16px;accent-color:var(--btn-bg)"> Remember me
+          </label>
+          <a href="#" id="forgotPassword" style="font-size:13px;color:var(--text);text-decoration:underline;text-underline-offset:2px">Forgot Password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-auth">Sign In</button>
+      </form>
+
+      <div class="auth-divider">or</div>
+
+      <div class="auth-footer">
+        <p>Don't have an account? <a href="register.html">Create an Account</a></p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div><a class="logo" href="index.html">LUMERA<span>.</span></a><p>Modern women's fashion for every day and every occasion.</p></div>
+    <div><h4>Shop</h4><a href="shop.html">All products</a><a href="shop.html?category=Dresses">Dresses</a><a href="shop.html?category=Shoes">Shoes</a><a href="shop.html?category=Bags">Bags</a><a href="shop.html?category=Jewelry">Jewelry</a><a href="shop.html?category=Watches">Watches</a></div>
+    <div><h4>Help</h4><a href="#">Shipping</a><a href="#">Returns</a><a href="contact.html">Contact</a><a href="#">FAQ</a></div>
+    <div><h4>Account</h4><a href="wishlist.html">Wishlist</a><a href="cart.html">Cart</a><a href="login.html">Sign In</a></div>
+    <div class="copyright">© 2026 LUMERA. Demo e-commerce project.</div>
+  </footer>
+
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-box">
+      <button id="closeSearch">×</button>
+      <input id="globalSearch" placeholder="Search products...">
+      <div id="searchResults"></div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("loginForm");
+      const emailInput = document.getElementById("email");
+      const passwordInput = document.getElementById("password");
+      const passwordToggle = document.querySelector(".password-toggle");
+      const forgotPassword = document.getElementById("forgotPassword");
+
+      passwordToggle.addEventListener("click", () => {
+        const type = passwordInput.type === "password" ? "text" : "password";
+        passwordInput.type = type;
+        passwordToggle.textContent = type === "password" ? "👁" : "🙈";
+        passwordToggle.setAttribute("aria-label", type === "password" ? "Show password" : "Hide password");
+      });
+
+      [emailInput, passwordInput].forEach(input => {
+        input.addEventListener("input", () => clearError(input));
+        input.addEventListener("blur", () => validateField(input));
+      });
+
+      function validateField(input) {
+        if (input.id === "email" && input.value && !validateEmail(input.value)) {
+          showError(input, "Please enter a valid email address");
+          return false;
+        }
+        if (input.id === "password" && input.value && input.value.length < 1) {
+          showError(input, "Password is required");
+          return false;
+        }
+        clearError(input);
+        return true;
+      }
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        let isValid = true;
+        [emailInput, passwordInput].forEach(input => {
+          if (!validateField(input)) isValid = false;
+          else if (!input.value.trim()) {
+            showError(input, `${input.id === "email" ? "Email" : "Password"} is required`);
+            isValid = false;
+          }
+        });
+
+        if (!isValid) return;
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Signing in...";
+
+        const result = login(emailInput.value.trim(), passwordInput.value);
+
+        if (result.success) {
+          toast("Welcome back, " + result.customer.name.split(" ")[0] + "!");
+          setTimeout(() => {
+            window.location.href = getRedirectUrl();
+          }, 1000);
+        } else {
+          toast(result.message, "error");
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Sign In";
+        }
+      });
+
+      forgotPassword.addEventListener("click", (e) => {
+        e.preventDefault();
+        const email = emailInput.value.trim();
+        if (!email) {
+          toast("Please enter your email address first", "info");
+          emailInput.focus();
+          return;
+        }
+        if (!validateEmail(email)) {
+          toast("Please enter a valid email address", "error");
+          emailInput.focus();
+          return;
+        }
+        toast("Password reset link sent to " + email + " (demo)", "success");
+      });
+    });
+  </script>
+</body>
+</html>
