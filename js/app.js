@@ -37,7 +37,12 @@ const seedProducts = [
 {id:35,name:"Vintage Brooch Pin",category:"Jewelry",price:1390,oldPrice:1690,rating:4.6,stock:18,badge:"Sale",popular:86,created:35,images:["https://images.unsplash.com/photo-1635767798638-3e2523422c67?auto=format&fit=crop&w=900&q=85"]},
 {id:36,name:"Rose Gold Bangle",category:"Jewelry",price:1890,oldPrice:2290,rating:4.7,stock:16,badge:"",popular:89,created:36,images:["https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=900&q=85"]},
 {id:37,name:"Evening Clutch Bag",category:"Bags",price:2890,oldPrice:3490,rating:4.8,stock:11,badge:"New",popular:91,created:37,images:["https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=85"]},
-{id:38,name:"Woven Straw Tote",category:"Bags",price:1690,oldPrice:2090,rating:4.6,stock:20,badge:"Sale",popular:88,created:38,images:["https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=900&q=85"]}
+{id:38,name:"Woven Straw Tote",category:"Bags",price:1690,oldPrice:2090,rating:4.6,stock:20,badge:"Sale",popular:88,created:38,images:["https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=900&q=85"]},
+{id:39,name:"Rose Gold Mesh Watch",category:"Watches",price:4290,oldPrice:5290,rating:4.8,stock:12,badge:"New",popular:93,created:39,images:["https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=900&q=85"]},
+{id:40,name:"Classic Leather Strap Watch",category:"Watches",price:3890,oldPrice:4590,rating:4.7,stock:15,badge:"",popular:90,created:40,images:["https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=900&q=85"]},
+{id:41,name:"Minimalist Steel Watch",category:"Watches",price:3590,oldPrice:4290,rating:4.9,stock:10,badge:"Best seller",popular:96,created:41,images:["https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85"]},
+{id:42,name:"Pearl Dial Watch",category:"Watches",price:4590,oldPrice:5490,rating:4.8,stock:8,badge:"New",popular:94,created:42,images:["https://images.unsplash.com/photo-1548390137-0f5e8823c759?auto=format&fit=crop&w=900&q=85"]},
+{id:43,name:"Gold Tone Bracelet Watch",category:"Watches",price:4990,oldPrice:5990,rating:4.7,stock:9,badge:"Sale",popular:92,created:43,images:["https://images.unsplash.com/photo-1533140503556-8d7b832f9e0c?auto=format&fit=crop&w=900&q=85"]}
 ];
 
 function getProducts(){ return JSON.parse(localStorage.getItem(STORE_KEY)||"null") || seedProducts; }
